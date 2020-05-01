@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "node server.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
+    "cacheable-response": "^2.0.8",
+    "express": "^4.17.1",
     "next": "9.3.6",
     "react": "16.13.1",
     "react-dom": "16.13.1"
