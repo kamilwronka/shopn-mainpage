@@ -1,29 +1,12 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
-import theme from "../src/theme";
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-165394244-1"
-          ></script>
-          <script>
-            {`window.dataLayer = window.dataLayer || []; function gtag()
-            {dataLayer.push(arguments)}
-            gtag('js', new Date()); gtag('config', 'UA-165394244-1');`}
-          </script>
-        </Head>
+        <Head>{/* PWA primary color */}</Head>
         <body>
           <Main />
           <NextScript />

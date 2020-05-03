@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
+import ReactGA from "react-ga";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -14,6 +15,8 @@ export default function MyApp(props) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+    ReactGA.initialize("UA-165394244-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (
@@ -23,6 +26,11 @@ export default function MyApp(props) {
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+        <meta name="theme-color" content={theme.palette.primary.main} />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Head>
       <ThemeProvider theme={theme}>
