@@ -7,7 +7,7 @@ import theme from "../src/theme";
 import ReactGA from "react-ga";
 
 export default function MyApp(props) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps, router } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -31,6 +31,12 @@ export default function MyApp(props) {
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <link
+          rel="canonical"
+          href={`https://csgoed.com${
+            router.asPath === "/" ? "" : router.asPath
+          }`}
         />
       </Head>
       <ThemeProvider theme={theme}>
