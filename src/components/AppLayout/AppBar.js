@@ -4,8 +4,8 @@ import {
   CssBaseline,
   Toolbar,
   Typography,
-  Link,
   Button,
+  Link,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     margin: theme.spacing(1, 1.5),
+  },
+  logo: {
+    textDecoration: "none",
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
@@ -75,7 +78,14 @@ function AppBar() {
             noWrap
             className={classes.toolbarTitle}
           >
-            csgoed.com
+            <Link
+              href="/"
+              color="inherit"
+              className={classes.logo}
+              underline="none"
+            >
+              csgoed.com
+            </Link>
           </Typography>
           <nav>
             <Link
@@ -89,15 +99,7 @@ function AppBar() {
             <Link
               variant="button"
               color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
+              href="/support"
               className={classes.link}
             >
               Support
