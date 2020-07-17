@@ -1,15 +1,18 @@
 FROM node:14.1.0-alpine
 
 ARG MAINPAGE_API_URL
-ARG PORT
+
+ENV PORT=80
+ENV MAINPAGE_API_URL=${MAINPAGE_API_URL}
 
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
-RUN yarn build
 
 ENV NODE_ENV=production
 
-EXPOSE 3000
+RUN yarn build
+
+EXPOSE 80
 ENTRYPOINT [ "yarn", "start" ]
