@@ -15,7 +15,7 @@ export default function MyApp(props) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-    ReactGA.initialize("UA-165394244-1");
+    ReactGA.initialize("UA-172981168-1");
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
