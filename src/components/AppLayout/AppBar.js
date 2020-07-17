@@ -84,7 +84,7 @@ function AppBar() {
               className={classes.logo}
               underline="none"
             >
-              csgoed.com
+              shopn.io
             </Link>
           </Typography>
           <nav>
@@ -106,7 +106,7 @@ function AppBar() {
             </Link>
           </nav>
           <Button
-            href="https://dashboard.csgoed.com/auth/signin"
+            href="https://app.shopn.io/auth/signin"
             color="primary"
             variant="outlined"
             className={classes.link}

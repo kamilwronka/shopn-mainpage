@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://csgoed.com/sitemap.xml
+Sitemap: https://shopn.io/sitemap.xml

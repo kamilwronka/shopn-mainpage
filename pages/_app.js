@@ -22,7 +22,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>csgoed.com</title>
+        <title>shopn.io</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -34,9 +34,7 @@ export default function MyApp(props) {
         />
         <link
           rel="canonical"
-          href={`https://csgoed.com${
-            router.asPath === "/" ? "" : router.asPath
-          }`}
+          href={`https://shopn.io${router.asPath === "/" ? "" : router.asPath}`}
         />
       </Head>
       <ThemeProvider theme={theme}>
