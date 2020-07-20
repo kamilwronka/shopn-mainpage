@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar as MuiAppBar,
   CssBaseline,
@@ -7,9 +7,15 @@ import {
   Button,
   Link,
   Container,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  Drawer,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/styles";
 import { green, purple } from "@material-ui/core/colors";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -26,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarContainer: {
     // margin: 0,
-    padding: 0,
+    padding: theme.spacing(3, 3, 0),
   },
   toolbar: {
     flexWrap: "wrap",
@@ -45,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(6, 0, 6),
   },
   cardHeader: {
     backgroundColor:
@@ -55,6 +61,18 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonLink: {
     backgroundColor: "#00B271",
+  },
+  menuButton: {
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+    color: "#fff",
+  },
+  desktopNav: {
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
   },
 }));
 
@@ -70,10 +88,21 @@ const ColorButton = withStyles((theme) => ({
 
 function AppBar() {
   const classes = useStyles();
+  const [drawerOpen, setDrawer] = useState(false);
+
+  const toggleDrawer = () => {
+    setDrawer((prevState) => !prevState);
+  };
 
   return (
     <>
       <CssBaseline />
+      <Drawer open={drawerOpen} anchor="right" onClose={toggleDrawer}>
+        <List>
+          <ListItem>Log In</ListItem>
+          <ListItem>Try it free</ListItem>
+        </List>
+      </Drawer>
       <MuiAppBar
         position="static"
         color="default"
@@ -97,14 +126,14 @@ function AppBar() {
                 shopn.io
               </Link>
             </Typography>
-            <nav>
+            <nav className={classes.desktopNav}>
               <Link
                 variant="button"
                 color="textPrimary"
                 href="#"
                 className={classes.link}
               >
-                Pricing and plans
+                Pricing
               </Link>
               <Link
                 variant="button"
@@ -127,10 +156,18 @@ function AppBar() {
               href="https://app.shopn.io/create"
               color="primary"
               variant="contained"
-              className={classes.link}
+              className={[classes.link, classes.desktopNav]}
             >
               Create your shop
             </ColorButton>
+            <IconButton
+              aria-label="Open drawer"
+              edge="start"
+              onClick={toggleDrawer}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </MuiAppBar>

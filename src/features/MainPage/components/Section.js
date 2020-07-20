@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
   test: "test",
   container: {
-    padding: "72px 0 72px 0",
+    padding: theme.spacing(8, 3, 6),
   },
 }));
 
@@ -14,23 +14,11 @@ const Section = () => {
 
   return (
     <Container maxWidth="lg" component="main" className={classes.container}>
-      <Grid container className={classes.root} spacing={6}>
-        <Grid
-          item
-          xs={6}
-          justify="center"
-          alignItems="center"
-          style={{ display: "flex" }}
-        >
-          <div style={{ height: 400, width: 400, background: "#ccc" }}></div>
+      <Grid container className={classes.root} spacing={6} wrap="wrap">
+        <Grid item xs={12} md={6}>
+          <div style={{ width: "100%", height: 200, background: "#ccc" }}></div>
         </Grid>
-        <Grid
-          item
-          xs={6}
-          justify="center"
-          direction="column"
-          style={{ height: 400, display: "flex" }}
-        >
+        <Grid item xs={12} md={6}>
           <div className={classes.shape}></div>
           <Typography
             component="h1"
