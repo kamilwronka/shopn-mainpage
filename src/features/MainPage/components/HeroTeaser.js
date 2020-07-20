@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     background: "red",
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(4, 3, 6),
   },
   heroHeader: {
     color: "#fff",
@@ -44,7 +44,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 40,
   },
   heroTeaserImage: {
-    height: 350,
+    width: "100%",
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+      //   width: 400,
+    },
   },
 }));
 
@@ -70,7 +75,7 @@ const CustomTextField = withStyles({
     background: "#fff",
     borderRadius: 4,
     marginRight: 16,
-    width: 300,
+    maxWidth: 300,
   },
 })(TextField);
 
@@ -78,10 +83,10 @@ const HeroTeaser = ({ children }) => {
   const classes = useStyles();
 
   return (
-    <div style={{ height: 600, background: "#6919CF", paddingTop: 70 }}>
+    <div style={{ minHeight: 600, background: "#6919CF", paddingTop: 70 }}>
       <Container maxWidth="lg" component="main" className={classes.heroContent}>
-        <Grid container className={classes.root} spacing={6}>
-          <Grid item xs={6}>
+        <Grid container className={classes.root} spacing={6} wrap="wrap">
+          <Grid item xs={12} md={6}>
             <div className={classes.shape}></div>
             <Typography
               component="h1"
@@ -113,7 +118,7 @@ const HeroTeaser = ({ children }) => {
               <ColorButton size="medium">Try it free</ColorButton>
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <img
               src="/assets/images/hero_teaser.jpg"
               className={classes.heroTeaserImage}
