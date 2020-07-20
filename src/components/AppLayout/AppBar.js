@@ -6,8 +6,10 @@ import {
   Typography,
   Button,
   Link,
+  Container,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, withStyles } from "@material-ui/styles";
+import { green, purple } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -18,19 +20,29 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    backgroundColor: "#6919CF",
+    margin: 0,
+    padding: 0,
+  },
+  appBarContainer: {
+    // margin: 0,
+    padding: 0,
   },
   toolbar: {
     flexWrap: "wrap",
+    padding: 0,
   },
   toolbarTitle: {
     flexGrow: 1,
   },
   link: {
-    margin: theme.spacing(1, 1.5),
+    margin: theme.spacing(1, 0, 1, 3),
+    color: "#fff",
+    textDecoration: "none",
   },
   logo: {
     textDecoration: "none",
+    color: "#fff",
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
@@ -41,23 +53,20 @@ const useStyles = makeStyles((theme) => ({
         ? theme.palette.grey[200]
         : theme.palette.grey[700],
   },
-  cardPricing: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "baseline",
-    marginBottom: theme.spacing(2),
-  },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-    },
+  buttonLink: {
+    backgroundColor: "#00B271",
   },
 }));
+
+const ColorButton = withStyles((theme) => ({
+  root: {
+    color: "#fff",
+    backgroundColor: green[500],
+    "&:hover": {
+      backgroundColor: green[700],
+    },
+  },
+}))(Button);
 
 function AppBar() {
   const classes = useStyles();
@@ -71,49 +80,59 @@ function AppBar() {
         elevation={0}
         className={classes.appBar}
       >
-        <Toolbar className={classes.toolbar}>
-          <Typography
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            <Link
-              href="/"
+        <Container maxWidth="lg" className={classes.appBarContainer}>
+          <Toolbar className={classes.toolbar}>
+            <Typography
+              variant="h6"
               color="inherit"
-              className={classes.logo}
-              underline="none"
+              noWrap
+              className={classes.toolbarTitle}
             >
-              shopn.io
-            </Link>
-          </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
+              <Link
+                href="/"
+                color="inherit"
+                className={classes.logo}
+                underline="none"
+              >
+                shopn.io
+              </Link>
+            </Typography>
+            <nav>
+              <Link
+                variant="button"
+                color="textPrimary"
+                href="#"
+                className={classes.link}
+              >
+                Pricing and plans
+              </Link>
+              <Link
+                variant="button"
+                color="textPrimary"
+                href="#"
+                className={classes.link}
+              >
+                Learn
+              </Link>
+              <Link
+                variant="button"
+                color="textPrimary"
+                href="https://app.shopn.io/auth/signin"
+                className={classes.link}
+              >
+                Log In
+              </Link>
+            </nav>
+            <ColorButton
+              href="https://app.shopn.io/create"
+              color="primary"
+              variant="contained"
               className={classes.link}
             >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="/support"
-              className={classes.link}
-            >
-              Support
-            </Link>
-          </nav>
-          <Button
-            href="https://app.shopn.io/auth/signin"
-            color="primary"
-            variant="outlined"
-            className={classes.link}
-          >
-            Login
-          </Button>
-        </Toolbar>
+              Create your shop
+            </ColorButton>
+          </Toolbar>
+        </Container>
       </MuiAppBar>
     </>
   );
